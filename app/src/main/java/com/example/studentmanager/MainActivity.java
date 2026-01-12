@@ -1,6 +1,5 @@
 package com.example.studentmanager;
 
-import com.example.studentmanager.R;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -67,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
         studentList.clear();
         studentList.addAll(dbHelper.getAllStudentsList());
         adapter.notifyDataSetChanged();
+
+        // Show/hide empty state
+        if (studentList.isEmpty()) {
+            binding.emptyStateView.setVisibility(View.VISIBLE);
+            binding.rvStudents.setVisibility(View.GONE);
+            binding.btnDeleteAll.setEnabled(false);
+        } else {
+            binding.emptyStateView.setVisibility(View.GONE);
+            binding.rvStudents.setVisibility(View.VISIBLE);
+            binding.btnDeleteAll.setEnabled(true);
+        }
     }
 
     private void showAddStudentDialog() {
