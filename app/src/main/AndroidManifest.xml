@@ -18,14 +18,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ViewStudentsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".EditStudentActivity"
-            android:exported="false" />
-
     </application>
 
 </manifest>

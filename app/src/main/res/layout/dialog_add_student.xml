@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="@color/surfaceContainerLow">
+    android:background="?attr/colorSurfaceVariant">
 
-    <!-- Title is set in MaterialAlertDialogBuilder -->
-
-    <!-- Name Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameLayout"
         style="@style/Widget.Material3.TextInputLayout.FilledBox"
@@ -18,7 +16,7 @@
         android:hint="Student Name"
         android:layout_marginBottom="16dp"
         app:startIconDrawable="@drawable/ic_person"
-        app:boxBackgroundColor="@color/surfaceContainerHighest"
+        app:boxBackgroundColor="?attr/colorSurface"
         app:boxCornerRadiusTopStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -29,12 +27,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:textColor="@color/onSurface"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Age Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ageLayout"
         style="@style/Widget.Material3.TextInputLayout.FilledBox"
@@ -43,7 +40,7 @@
         android:hint="Student Age"
         android:layout_marginBottom="16dp"
         app:startIconDrawable="@drawable/ic_numbers"
-        app:boxBackgroundColor="@color/surfaceContainerHighest"
+        app:boxBackgroundColor="?attr/colorSurface"
         app:boxCornerRadiusTopStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -54,12 +51,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:textColor="@color/onSurface"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Course Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/courseLayout"
         style="@style/Widget.Material3.TextInputLayout.FilledBox"
@@ -68,7 +64,7 @@
         android:hint="Student Course"
         android:layout_marginBottom="16dp"
         app:startIconDrawable="@drawable/ic_course"
-        app:boxBackgroundColor="@color/surfaceContainerHighest"
+        app:boxBackgroundColor="?attr/colorSurface"
         app:boxCornerRadiusTopStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -79,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:textColor="@color/onSurface"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>

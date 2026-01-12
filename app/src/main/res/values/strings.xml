@@ -155,27 +155,5 @@
     <string name="toast_deleting">Deleting student…</string>
     <string name="snackbar_undo">UNDO</string>
     <string name="snackbar_dismiss">DISMISS</string>
-    <string name="a11y_menu_button">Navigation menu</string>
-    <string name="a11y_search_button">Search students</string>
-    <string name="a11y_add_button">Add new student</string>
-    <string name="a11y_view_button">View all students</string>
-    <string name="a11y_student_name">Student name input field</string>
-    <string name="a11y_student_age">Student age input field</string>
-    <string name="a11y_student_course">Student course input field</string>
-    <string name="format_student_count">%d students</string>
-    <string name="format_average_age">Avg: %.1f years</string>
-    <string name="format_age_years">%d years old</string>
-    <string name="format_course_count">%s: %d students</string>
-    <string name="format_last_updated">Last updated: %s</string>
-    <string name="search_by_name">Search by name…</string>
-    <string name="search_by_course">Search by course…</string>
-    <string name="search_by_id">Search by ID…</string>
-    <string name="filter_all">All Students</string>
-    <string name="filter_by_course">By Course</string>
-    <string name="filter_by_age">By Age Range</string>
-    <string name="filter_sort_az">Sort A-Z</string>
-    <string name="filter_sort_za">Sort Z-A</string>
-    <string name="filter_sort_newest">Newest First</string>
-    <string name="filter_sort_oldest">Oldest First</string>
 
 </resources>

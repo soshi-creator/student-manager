@@ -1,20 +1,26 @@
 package com.example.studentmanager;
 
-import android.content.Intent;
+import com.example.studentmanager.R;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.studentmanager.databinding.ActivityMainBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private DatabaseHelper dbHelper;
+    private ArrayList<Student> studentList;
+    private StudentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,53 +35,93 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        binding.btnAdd.setOnClickListener(v -> {
-            String name = binding.etName.getText().toString().trim();
-            String ageStr = binding.etAge.getText().toString().trim();
-            String course = binding.etCourse.getText().toString().trim();
+        studentList = new ArrayList<>();
+        adapter = new StudentAdapter(this, studentList, dbHelper, this::showEditDialog);
+        binding.rvStudents.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvStudents.setAdapter(adapter);
 
-            if (name.isEmpty() || ageStr.isEmpty() || course.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        loadStudents();
+
+        binding.btnAddStudent.setOnClickListener(v -> showAddStudentDialog());
+
+        binding.btnDeleteAll.setOnClickListener(v -> {
+            if (studentList.isEmpty()) {
+                Toast.makeText(this, "No students to delete", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int age;
-            try {
-                age = Integer.parseInt(ageStr);
-            } catch (NumberFormatException e) {
-                Toast.makeText(this, "Invalid age", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            boolean inserted = dbHelper.addStudent(name, age, course);
-
-            if (inserted) {
-                Toast.makeText(this, "Student added", Toast.LENGTH_SHORT).show();
-                binding.etName.setText("");
-                binding.etAge.setText("");
-                binding.etCourse.setText("");
-            } else {
-                Toast.makeText(this, "Error adding student", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        binding.btnView.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, ViewStudentsActivity.class));
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle("Delete All Students")
+                    .setMessage("Are you sure you want to delete all students?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        dbHelper.deleteAllStudents();
+                        loadStudents();
+                        Toast.makeText(this, "All students deleted", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void loadStudents() {
+        studentList.clear();
+        studentList.addAll(dbHelper.getAllStudentsList());
+        adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_exit) {
-            finish();
-            return true;
+    private void showAddStudentDialog() {
+        showStudentDialog(null);
+    }
+
+    private void showEditDialog(Student student) {
+        showStudentDialog(student);
+    }
+
+    private void showStudentDialog(Student studentToEdit) {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_add_student, null);
+        TextInputEditText etName = dialogView.findViewById(R.id.etName);
+        TextInputEditText etAge = dialogView.findViewById(R.id.etAge);
+        TextInputEditText etCourse = dialogView.findViewById(R.id.etCourse);
+
+        boolean isEdit = studentToEdit != null;
+        if (isEdit) {
+            etName.setText(studentToEdit.getName());
+            etAge.setText(String.valueOf(studentToEdit.getAge()));
+            etCourse.setText(studentToEdit.getCourse());
         }
-        return super.onOptionsItemSelected(item);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(isEdit ? "Edit Student" : "Add Student")
+                .setView(dialogView)
+                .setPositiveButton("Save", (dialog, which) -> {
+                    String name = etName.getText().toString().trim();
+                    String ageStr = etAge.getText().toString().trim();
+                    String course = etCourse.getText().toString().trim();
+
+                    if (name.isEmpty() || ageStr.isEmpty() || course.isEmpty()) {
+                        Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    int age;
+                    try {
+                        age = Integer.parseInt(ageStr);
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(this, "Invalid age", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (isEdit) {
+                        dbHelper.updateStudent(studentToEdit.getId(), name, age, course);
+                        Toast.makeText(this, "Student updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        dbHelper.addStudent(name, age, course);
+                        Toast.makeText(this, "Student added", Toast.LENGTH_SHORT).show();
+                    }
+
+                    loadStudents();
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 }

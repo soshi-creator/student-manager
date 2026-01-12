@@ -3,21 +3,12 @@
     android:height="120dp"
     android:viewportWidth="120"
     android:viewportHeight="120">
-    <!-- Graduation cap -->
-    <path
-        android:fillColor="@color/primary"
-        android:pathData="M60,20L20,40l40,20 40,-20zM30,50v20l30,15 30,-15V50l-30,15z"/>
 
-    <!-- Book -->
     <path
         android:fillColor="@color/secondaryContainer"
-        android:pathData="M80,70c-5,0 -10,2 -13,5 -3,-3 -8,-5 -13,-5 -8,0 -15,4 -18,10v30c3,-6 10,-10 18,-10 5,0 10,2 13,5 3,-3 8,-5 13,-5 8,0 15,4 18,10V80c-3,-6 -10,-10 -18,-10z"/>
+        android:pathData="M60,0A60,60 0 1,0 60,120A60,60 0 1,0 60,0Z"/>
 
-    <!-- Pencil/Writing tool -->
     <path
-        android:fillColor="@color/outline"
-        android:pathData="M95,95l-15,15 -30,-30 15,-15z"/>
-    <path
-        android:fillColor="@color/primary"
-        android:pathData="M80,100l-5,5 -10,-10 5,-5z"/>
+        android:fillColor="@color/onSecondaryContainer"
+        android:pathData="M60,20A20,20 0 1,0 60,60A20,20 0 1,0 60,20Z"/>
 </vector>
