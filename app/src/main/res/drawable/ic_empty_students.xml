@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Empty folder/book -->
+    <path
+        android:fillColor="#CAC4D0"
+        android:pathData="M20,20H40v40H20z"/>
+
+    <path
+        android:fillColor="#CAC4D0"
+        android:pathData="M40,20h40v40H40z"/>
+
+    <path
+        android:fillColor="#CAC4D0"
+        android:pathData="M80,20h40v40H80z"/>
+
+    <!-- Magnifying glass -->
+    <path
+        android:fillColor="#79747E"
+        android:pathData="M90,90l20,20M80,80a20,20 0,1,0 0,0z"/>
+
+    <!-- Plus sign -->
+    <path
+        android:fillColor="#6750A4"
+        android:pathData="M55,45h10v15h15v10H65v15H55V70H40V60h15z"/>
+</vector>
