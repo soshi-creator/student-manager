@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         studentList.addAll(dbHelper.getAllStudentsList());
         adapter.notifyDataSetChanged();
 
-        // Show/hide empty state
         if (studentList.isEmpty()) {
             binding.emptyStateView.setVisibility(View.VISIBLE);
             binding.rvStudents.setVisibility(View.GONE);

@@ -78,7 +78,7 @@
             android:layout_height="1dp"
             android:background="?attr/colorOutlineVariant"/>
 
-        <!-- Empty State View -->
+
         <LinearLayout
             android:id="@+id/emptyStateView"
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                 android:gravity="center"/>
         </LinearLayout>
 
-        <!-- RecyclerView -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvStudents"
             android:layout_width="match_parent"

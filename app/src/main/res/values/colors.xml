@@ -1,32 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary and secondary -->
     <color name="primary">#6750A4</color>
     <color name="onPrimary">#FFFFFF</color>
     <color name="secondary">#625B71</color>
     <color name="onSecondary">#FFFFFF</color>
     <color name="secondaryContainer">#E8DEF8</color>
     <color name="onSecondaryContainer">#1D192B</color>
-
-    <!-- Surfaces -->
     <color name="surface">#FFFBFE</color>
     <color name="surfaceVariant">#E7E0EC</color>
     <color name="surfaceContainerLow">#F2F0F4</color>
-    <color name="surfaceContainerHighest">#FFFFFF</color> <!-- this was missing -->
-
-    <!-- Text and icons on surfaces -->
+    <color name="surfaceContainerHighest">#FFFFFF</color>
     <color name="onSurface">#1C1B1F</color>
     <color name="onSurfaceVariant">#49454F</color>
-
-    <!-- Borders, outlines, strokes -->
     <color name="outline">#79747E</color>
     <color name="outlineVariant">#CAC4D0</color>
-
-    <!-- Error / alerts -->
     <color name="error">#B3261E</color>
     <color name="onError">#FFFFFF</color>
-
-    <!-- Accents / optional -->
     <color name="success">#4CAF50</color>
     <color name="warning">#FFB300</color>
     <color name="info">#2196F3</color>
